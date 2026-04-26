@@ -1,4 +1,5 @@
 import type {ChangeEvent} from "react";
+import TextField from "@mui/material/TextField";
 
 type SearchPropsType = {
     value: string
@@ -6,7 +7,7 @@ type SearchPropsType = {
 }
 export const Search = ({value, onChange}: SearchPropsType) => {
     return (
-        <input type="search" value={value} onChange={onChange}/>
+        <TextField fullWidth sx={{mb:'15px'}} label='Search' variant={"standard"} type="search" value={value} onChange={onChange}/>
     );
 };
 

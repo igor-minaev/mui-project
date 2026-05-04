@@ -3,7 +3,6 @@ import {GoodsList} from "./components/GoodsList.tsx";
 import {goods} from "./data/phones.ts";
 import {type ChangeEvent, useState} from "react";
 import {Search} from "./components/Search.tsx";
-import {BasketList} from "./components/BasketList.tsx";
 import {Header} from "./components/Header.tsx";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {cyan, lightGreen} from "@mui/material/colors";
@@ -56,11 +55,10 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
-            <Header changeTheme={changeTheme} handleCart={()=>setIsCartOpen(true)}/>
+            <Header changeTheme={changeTheme} handleCart={()=>setIsCartOpen(true)} orderLen={order.length}/>
             <Container maxWidth="md" sx={{mt: '15px'}}>
                 <Search value={search} onChange={SearchHandler}/>
                 <GoodsList goods={products} addToOrder={addToOrder}/>
-                <BasketList order={order} removeFromOrder={removeFromOrder}/>
             </Container>
             <Basket order={order} removeFromOrder={removeFromOrder} cartOpen={isCartOpen} closeCart={()=>setIsCartOpen(false)}/>
         </ThemeProvider>

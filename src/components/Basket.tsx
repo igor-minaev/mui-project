@@ -6,6 +6,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ShoppingBasket from "@mui/icons-material/ShoppingBasket";
 import ListItemText from "@mui/material/ListItemText";
 import {Divider} from "@mui/material";
+import Typography from "@mui/material/Typography";
 import {BasketItem} from "./BasketItem.tsx";
 
 type BasketPropsType = {
@@ -37,6 +38,12 @@ export const Basket = ({order, removeFromOrder, cartOpen, closeCart}: BasketProp
                             <BasketItem key={item.name} {...item} removeFromOrder={removeFromOrder}/>
                         ))}
                         <Divider/>
+                        <ListItem>
+                            <Typography sx={{fontWeight: 700}}>
+                                Общая стоимость:{' '}
+                                {order.reduce((acc, el) => acc + el.price, 0)}{' '}руб
+                            </Typography>
+                        </ListItem>
                     </>
                 )}
             </List>

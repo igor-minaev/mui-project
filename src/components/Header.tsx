@@ -4,13 +4,15 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ShoppingBasket from '@mui/icons-material/ShoppingBasket';
 import {ThemeSwitch} from "./ThemeSwitch.tsx";
+import {Badge} from "@mui/material";
 
 type HeaderPropsType = {
     changeTheme: () => void
     handleCart: () => void
+    orderLen: number
 }
 
-export const Header = ({changeTheme, handleCart}: HeaderPropsType) => {
+export const Header = ({changeTheme, handleCart, orderLen}: HeaderPropsType) => {
     return (
         <AppBar position="static">
             <Toolbar>
@@ -19,7 +21,9 @@ export const Header = ({changeTheme, handleCart}: HeaderPropsType) => {
                 </Typography>
                 <ThemeSwitch onChange={changeTheme}/>
                 <IconButton color='inherit' onClick={handleCart}>
-                    <ShoppingBasket/>
+                    <Badge color='secondary' badgeContent={orderLen}>
+                        <ShoppingBasket/>
+                    </Badge>
                 </IconButton>
             </Toolbar>
         </AppBar>
